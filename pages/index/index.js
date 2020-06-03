@@ -50,5 +50,20 @@ Page({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
+  },
+  bindblur:function(e){
+    console.log(e.detail.value);
+    var max = e.detail.value;
+    if (max == undefined || max.length == 0){
+        return;
+    }
+    var reg = new RegExp("^[0-9]*$");
+    if (!reg.test(max)){
+        app.toast.showFail('金额填错了哈',2000);
+        return;
+    }
+    wx.navigateTo({
+      url: '../logs/logs?max=' + max 
+    })
   }
 })

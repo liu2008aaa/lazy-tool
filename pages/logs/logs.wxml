@@ -1,6 +1,12 @@
 <!--logs.wxml-->
+<view hidden="{{logs.length > 0}}" class="loading-view">
+    {{tips}}
+</view>
 <view class="container log-list">
   <block wx:for="{{logs}}" wx:for-item="log">
-    <text class="log-item">{{index + 1}}. {{log}}</text>
+    <text class="log-item">{{index + 1}}. {{log.name}}  {{log.price}}元</text>
   </block>
+</view>
+<view hidden="{{logs.length == 0}}" class="result-view">
+   总金额：{{total}}元
 </view>

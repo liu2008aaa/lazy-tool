@@ -17,5 +17,9 @@
 }
 
 .usermotto {
-  margin-top: 200px;
+  margin-top: 30px;
+}
+
+.input-fee{
+ text-align: center;
 }

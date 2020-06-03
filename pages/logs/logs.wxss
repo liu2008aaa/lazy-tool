@@ -1,8 +1,21 @@
+.loading-view{
+  width: 100%;
+  display: flex; 
+  justify-content: center;
+  margin-top: 80px;
+}
 .log-list {
   display: flex;
   flex-direction: column;
-  padding: 40rpx;
+  padding: 40rpx; 
 }
 .log-item {
   margin: 10rpx;
+  width: 150px;
+}
+.result-view{
+  width: 100%;
+  display: flex; 
+  justify-content: center;
+  margin-top: 80px;
 }

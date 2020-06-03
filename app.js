@@ -1,4 +1,5 @@
 //app.js
+const Toast = require('/utils/toast'); 
 App({
   onLaunch: function () {
     // 展示本地存储能力
@@ -35,5 +36,6 @@ App({
   },
   globalData: {
     userInfo: null
-  }
+  },
+  toast: new Toast()
 })
