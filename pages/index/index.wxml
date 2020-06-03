@@ -9,7 +9,7 @@
   </view>
 
   
-  <view class="usermotto" hidden="{{!hasUserInfo}}">
+  <view class="usermotto" wx:if="{{hasUserInfo}}" >
   <input class="input-fee" auto-focus maxlength="10" type="digit" placeholder="输入预期花费" bindblur="bindblur"/>
   </view>
 </view>
