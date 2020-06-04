@@ -6,20 +6,20 @@ Page({
     tips:'我正在思考....',
     max:0,
     list: [
-      { id: 1, name: '醋溜白菜', price: 12 },
-      { id: 2, name: '西红柿炒蛋', price: 10 },
-      { id: 3, name: '尖椒土豆丝', price: 11 },
-      { id: 4, name: '鱼香肉丝', price: 15 },
-      { id: 5, name: '水煮肉片', price: 18 },
-      { id: 6, name: '清炒空心菜', price: 8 },
-      { id: 7, name: '白切鸡', price: 16 },
+      { name: '醋溜白菜', price: 12 },
+      { name: '西红柿炒蛋', price: 10 },
+      { name: '尖椒土豆丝', price: 11 },
+      { name: '鱼香肉丝', price: 15 },
+      { name: '水煮肉片', price: 18 },
+      { name: '清炒空心菜', price: 8 },
+      { name: '白切鸡', price: 16 },
     ],
     logs:[],
     total:0
   },
   onLoad: function (o) {
-    if(o.ids != undefined){
-        this.loadByIds(o.ids,o.total);
+    if (o.idxs != undefined){
+        this.loadByIds(o.idxs,o.total);
         return;
     }
     var max = o.max; 
@@ -57,16 +57,15 @@ Page({
     temp.sort(this.compare);
     this.setData({logs:temp,total:total});
   },
-  loadByIds: function (ids, total){
-    console.log("ids:" + ids);
-    var idArr = ids.split(",");
+  loadByIds: function (idxs, total){
+    console.log("idxs:" + idxs);
+    var idArr = idxs.split(",");
     var datas = this.data.list;
     var temp = [];
-    idArr.forEach(id => {
+    idArr.forEach(idx => {
       for (let i in datas) {
-        var o = datas[i];
-        if (o.id == id) {
-          temp.push(o);
+        if (i == idx) {
+          temp.push(datas[i]);
           break;
         }
       } 
@@ -84,11 +83,14 @@ Page({
     var logs = this.data.logs;
     var total = this.data.total;
     if(logs != undefined && logs.length > 0){
-      var ids = "";
+      var datas = this.data.list;
+      var idxs = "";
       for (let i in logs){
-        ids += logs[i].id + ",";
+        var idx = datas.indexOf(logs[i]);
+        idxs += idx + ",";
+        console.log(idxs);
       }
-      path += "?total=" + total+ "&ids=" + ids;
+      path += "?total=" + total+ "&idxs=" + idxs;
     }
     console.log("path:" + path);
     return {

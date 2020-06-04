@@ -16,6 +16,7 @@ Page({
     })
   },
   onLoad: function () {
+    try { wx.showShareMenu({}) } catch (e) { console.log("has error:" + e) }
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
