@@ -1,4 +1,8 @@
 /**index.wxss**/
+
+@import "../common/index.wxss";
+@import "../common/lib/weui.wxss";
+
 .userinfo {
   display: flex;
   flex-direction: column;
@@ -8,7 +12,7 @@
 .userinfo-avatar {
   width: 128rpx;
   height: 128rpx;
-  margin: 20rpx;
+  margin: 10rpx;
   border-radius: 50%;
 }
 
@@ -18,8 +22,17 @@
 
 .usermotto {
   margin-top: 30px;
+  padding: 10px;
+} 
+.btn{ 
+  margin-top: 40px;
 }
 
-.input-fee{
- text-align: center;
+.page-head{
+  padding: 50rpx 0rpx 3rpx;
+  text-align: center;
 }
+.page-section{
+  width: 100%;
+  margin-bottom: 30rpx;
+} 

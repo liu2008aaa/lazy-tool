@@ -8,8 +8,24 @@
     </block>
   </view>
 
-  
-  <view class="usermotto" wx:if="{{hasUserInfo}}" >
-  <input class="input-fee" auto-focus maxlength="10" type="digit" placeholder="输入预期花费" bindblur="bindblur"/>
+  <view class="page-body usermotto">
+    <view class="page-section">
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+          <input class="weui-input" maxlength="10" type="digit" placeholder="人数" bindblur="bindblurOfNum" value="{{num}}" />
+        </view>
+      </view>
+    </view>
+    <view class="page-section">
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+          <input class="weui-input" type="digit" placeholder="预期金额" maxlength="18" bindblur="bindblurOfMax" value="{{max}}" />
+        </view>
+      </view>
+    </view>
+    <view class="index-button">
+      <button bindtap="next" class="btn" type="primary" size="default">填好了</button>
+      <button bindtap="reset"  style="margin-top: 15px;" type="default" size="default">重新填</button>
+    </view>
   </view>
 </view>

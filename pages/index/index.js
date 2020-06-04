@@ -7,7 +7,9 @@ Page({
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    num:undefined,
+    max:undefined
   },
   //事件处理函数
   bindViewTap: function() {
@@ -52,19 +54,44 @@ Page({
       hasUserInfo: true
     })
   },
-  bindblur:function(e){
+  bindblurOfNum: function (e) {
+    console.log(e.detail.value);
+    var num = e.detail.value;
+    if (num == undefined || num.length == 0) {
+      return;
+    }
+    var reg = new RegExp("^[0-9]*$");
+    if (!reg.test(num)) {
+      app.toast.showFail('人数填错了哈', 2000);
+      return;
+    }
+    this.setData({ num: num });
+  },
+  bindblurOfMax:function(e){
     console.log(e.detail.value);
     var max = e.detail.value;
     if (max == undefined || max.length == 0){
         return;
-    }
+    }    
     var reg = new RegExp("^[0-9]*$");
     if (!reg.test(max)){
         app.toast.showFail('金额填错了哈',2000);
         return;
+    } 
+    this.setData({ max: max });
+  },
+  next:function(){
+    var num = this.data.num;
+    var max = this.data.max;
+    if(num == undefined || max == undefined || num == '' || max == ''){
+        app.toast.showFail('没填好！', 2000);
+        return;
     }
     wx.navigateTo({
-      url: '../logs/logs?max=' + max 
+      url: '../logs/logs?max=' + max + "&num=" + num
     })
+  },
+  reset:function(){
+    this.setData({num:'',max:''});
   }
 })

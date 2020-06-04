@@ -8,5 +8,8 @@
   </block>
 </view>
 <view hidden="{{logs.length == 0}}" class="result-view">
-   总金额：{{total}}元
+   <text>总金额:{{total}}元,{{num}}人,人均:{{avg}}元</text>
 </view>
+ <button hidden="{{logs.length == 0}}" open-type="share" class="btn" type="primary" size="default">分享</button>
+
+<button bindtap="goback" class="btn" type="default" size="default">返回</button>
